@@ -5,42 +5,141 @@ export default function Cursor() {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let ringX = 0;
+    let ringY = 0;
 
     const move = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        dotRef.current.style.transform = `
+          translate3d(${mouseX}px, ${mouseY}px, 0)
+        `;
       }
     };
 
     const animate = () => {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
+
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        ringRef.current.style.transform = `
+          translate3d(${ringX}px, ${ringY}px, 0)
+        `;
       }
+
       requestAnimationFrame(animate);
     };
 
     window.addEventListener("mousemove", move);
+
     animate();
 
-    const links = document.querySelectorAll("a, button, .hoverable");
-    links.forEach((el) => {
-      el.addEventListener("mouseenter", () => ringRef.current?.classList.add("expand"));
-      el.addEventListener("mouseleave", () => ringRef.current?.classList.remove("expand"));
+    const hoverElements = document.querySelectorAll(
+      "a, button, .hoverable"
+    );
+
+    hoverElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        ringRef.current?.classList.add("expand");
+      });
+
+      el.addEventListener("mouseleave", () => {
+        ringRef.current?.classList.remove("expand");
+      });
     });
 
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      window.removeEventListener("mousemove", move);
+    };
   }, []);
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot" />
-      <div ref={ringRef} className="cursor-ring" />
+      {/* SMALL DOT */}
+      <div
+        ref={dotRef}
+        className="
+          fixed
+          top-0
+          left-0
+          z-[9999]
+          w-2.5
+          h-2.5
+          rounded-full
+          bg-violet-400
+          pointer-events-none
+          -translate-x-1/2
+          -translate-y-1/2
+          shadow-[0_0_18px_rgba(139,92,246,0.9)]
+          mix-blend-screen
+        "
+      />
+
+      {/* OUTER RING */}
+      <div
+        ref={ringRef}
+        className="
+          cursor-ring
+          fixed
+          top-0
+          left-0
+          z-[9998]
+          w-10
+          h-10
+          rounded-full
+          border
+          border-violet-400/40
+          bg-violet-500/5
+          backdrop-blur-sm
+          pointer-events-none
+          -translate-x-1/2
+          -translate-y-1/2
+          transition-all
+          duration-300
+          ease-out
+          shadow-[0_0_40px_rgba(139,92,246,0.25)]
+        "
+      />
+
+      {/* STYLE */}
+      <style>
+        {`
+          .cursor-ring.expand {
+            width: 72px;
+            height: 72px;
+
+            border-color: rgba(139,92,246,0.8);
+
+            background: rgba(139,92,246,0.12);
+
+            box-shadow:
+              0 0 60px rgba(139,92,246,0.45),
+              0 0 120px rgba(59,130,246,0.25);
+          }
+
+          @media (max-width: 768px) {
+            .cursor-ring,
+            .cursor-dot {
+              display: none;
+            }
+          }
+
+          body {
+            cursor: none;
+          }
+
+          a,
+          button,
+          .hoverable {
+            cursor: none;
+          }
+        `}
+      </style>
     </>
   );
 }
