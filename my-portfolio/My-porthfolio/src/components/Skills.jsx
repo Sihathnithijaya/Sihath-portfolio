@@ -107,7 +107,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="relative py-28 px-6 overflow-hidden"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* BACKGROUND GLOW */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-600/20 blur-[140px]" />
@@ -122,7 +122,7 @@ export default function Skills() {
         </div>
 
         {/* TITLE */}
-        <h2 className="reveal text-5xl md:text-6xl font-black text-white leading-tight">
+        <h2 className="reveal text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
           Skills &
           <span className="block bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
             Technologies
@@ -137,7 +137,7 @@ export default function Skills() {
         </p>
 
         {/* SKILLS GRID */}
-        <div className="grid lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           {skillGroups.map((group, index) => (
             <div
               key={group.category}

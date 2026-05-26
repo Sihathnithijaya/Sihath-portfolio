@@ -53,7 +53,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-28 px-6 overflow-hidden"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* BACKGROUND GLOW */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-600/20 blur-[140px]" />
@@ -66,7 +66,7 @@ export default function Contact() {
           Contact
         </div>
 
-        <h2 className="reveal text-5xl md:text-6xl font-black text-white leading-tight">
+        <h2 className="reveal text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
           Let’s Build
           <span className="block bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
             Something Great

@@ -39,8 +39,8 @@ const projects = [
     glow: "bg-cyan-500/20",
     icon: "📝",
     links: {
-      live: "#",
-      github: "#",
+      live: "https://github.com/Sihathnithijaya/myquote-rails",
+      github: "https://github.com/Sihathnithijaya/myquote-rails/tree/main/myquote",
     },
   },
 
@@ -57,8 +57,8 @@ const projects = [
     glow: "bg-pink-500/20",
     icon: "🧠",
     links: {
-      live: "#",
-      github: "#",
+      live: "https://github.com/Sihathnithijaya/Nulldle-Word-Guessing-Game",
+      github: "https://github.com/Sihathnithijaya/Nulldle-Word-Guessing-Game/tree/main/nulldle",
     },
   },
 
@@ -75,8 +75,8 @@ const projects = [
     glow: "bg-orange-500/20",
     icon: "🎮",
     links: {
-      live: "#",
-      github: "#",
+      live: "https://github.com/Sihathnithijaya/tic_tac_toe_flutter_project",
+      github: "https://github.com/Sihathnithijaya/tic_tac_toe_flutter_project/tree/main/tic_tac_toe",
     },
   },
 ];
@@ -106,7 +106,7 @@ export default function Projects() {
     <section
       id="projects"
       ref={ref}
-      className="relative py-28 px-6 overflow-hidden"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* BACKGROUND GLOW */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/20 blur-[140px]" />
@@ -120,7 +120,7 @@ export default function Projects() {
           Featured Work
         </div>
 
-        <h2 className="reveal text-5xl md:text-6xl font-black text-white leading-tight">
+        <h2 className="reveal text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
           Selected
           <span className="block bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
             Projects
@@ -156,12 +156,12 @@ export default function Projects() {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="mt-8 text-3xl font-bold text-white leading-tight">
+                <h3 className="mt-8 text-2xl sm:text-3xl font-bold text-white leading-tight">
                   {project.title}
                 </h3>
 
                 {/* DESC */}
-                <p className="mt-5 text-slate-400 leading-relaxed text-[15px]">
+                <p className="mt-5 text-slate-400 leading-relaxed text-sm sm:text-[15px]">
                   {project.desc}
                 </p>
 

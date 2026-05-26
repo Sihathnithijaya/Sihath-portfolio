@@ -1,4 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import me from "../assets/me.jpg";
+import { CiLinkedin } from "react-icons/ci";
+import my from "../assets/resume.pdf";
+
+
 import {
   ExternalLink,
   Mail,
@@ -141,7 +146,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden flex items-center justify-center px-6"
+      className="relative min-h-screen overflow-hidden flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8"
     >
       {/* PARTICLE CANVAS */}
       <canvas
@@ -166,7 +171,7 @@ export default function Hero() {
             </div>
 
             {/* TITLE */}
-            <h1 className="text-5xl md:text-7xl font-black leading-tight text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-white">
               Sihath
               <span className="block bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
                 Rathnayake
@@ -185,7 +190,7 @@ export default function Hero() {
             </div>
 
             {/* DESCRIPTION */}
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400">
+            <p className="mt-8 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-400">
               Passionate about building scalable applications, intuitive user
               experiences, and modern digital products that combine clean
               design, performance, and innovation.
@@ -210,7 +215,7 @@ export default function Hero() {
               </button>
 
               <a
-                href="/resume.pdf"
+                href={my}
                 download
                 className="group inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-7 py-4 text-white font-semibold hover:border-violet-400/30 hover:bg-violet-500/10 transition duration-300"
               >
@@ -235,6 +240,21 @@ export default function Hero() {
 
                 <span className="text-slate-300 group-hover:text-white">
                   GitHub
+                </span>
+              </a>
+
+              <a
+                href="https://linkedin.com/in/sihath-nithijaya-439407280"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-5 py-4 hover:border-violet-400/30 hover:-translate-y-1 transition duration-300"
+              >
+                <CiLinkedin 
+                size={24} 
+                className="text-white font-bold group-hover:text-violet-300 transition" />
+
+                <span className="text-slate-300 group-hover:text-white">
+                  Linkedin
                 </span>
               </a>
 
@@ -270,10 +290,58 @@ export default function Hero() {
               {/* CONTENT */}
               <div className="p-8 flex flex-col h-full">
                 <div className="flex items-center justify-center">
-                  <div className="w-40 h-40 rounded-full bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center text-6xl font-black text-white shadow-2xl shadow-violet-500/30">
-                    SN
+                <div className="relative group">
+                  
+                  {/* GLOW */}
+                  <div className="
+                    absolute
+                    -inset-2
+                    rounded-full
+                    bg-gradient-to-r
+                    from-violet-600
+                    via-blue-500
+                    to-cyan-400
+                    opacity-30
+                    blur-2xl
+                    group-hover:opacity-50
+                    transition
+                    duration-700
+                  " />
+
+                  {/* IMAGE */}
+                  <div className="
+                    relative
+                    w-40
+                    h-40
+                    sm:w-48
+                    sm:h-48
+                    lg:w-56
+                    lg:h-56
+                    rounded-full
+                    overflow-hidden
+                    border-4
+                    border-white/10
+                    shadow-2xl
+                    shadow-violet-500/20
+                  ">
+                    <img
+                      src={me}
+                      alt="Sihath Rathnayake"
+                      className="
+                        w-full
+                        h-full
+                        rounded-full
+                        object-cover
+                        object-top
+                        scale-105
+                        group-hover:scale-110
+                        transition
+                        duration-700
+                      "
+                    />
                   </div>
                 </div>
+              </div>
 
                 <div className="mt-10 space-y-5">
                   <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-5">
