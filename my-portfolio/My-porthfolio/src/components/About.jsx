@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Code2, Sparkles, Rocket, Brain } from "lucide-react";
-import me from "../assets/me.jpg";
+import me2 from "../assets/me2.jpg";
 
 const stats = [
   { value: "2+", label: "Years Learning & Building" },
@@ -60,7 +60,7 @@ export default function About() {
 
                   <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl shadow-violet-500/20">
                     <img
-                      src={me}
+                      src={me2}
                       alt="Sihath Rathnayake"
                       className="w-full h-full rounded-full object-cover object-top scale-105 group-hover:scale-110 transition duration-700"
                     />
