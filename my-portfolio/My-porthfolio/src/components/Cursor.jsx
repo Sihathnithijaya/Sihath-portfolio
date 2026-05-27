@@ -5,6 +5,10 @@ export default function Cursor() {
   const ringRef = useRef(null);
 
   useEffect(() => {
+    // Don't render custom cursor on mobile/touch devices
+    const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+    if (isMobile) return;
+
     let mouseX = 0;
     let mouseY = 0;
 
@@ -16,9 +20,8 @@ export default function Cursor() {
       mouseY = e.clientY;
 
       if (dotRef.current) {
-        dotRef.current.style.transform = `
-          translate3d(${mouseX}px, ${mouseY}px, 0)
-        `;
+        dotRef.current.style.left = mouseX + 'px';
+        dotRef.current.style.top = mouseY + 'px';
       }
     };
 
@@ -27,16 +30,14 @@ export default function Cursor() {
       ringY += (mouseY - ringY) * 0.12;
 
       if (ringRef.current) {
-        ringRef.current.style.transform = `
-          translate3d(${ringX}px, ${ringY}px, 0)
-        `;
+        ringRef.current.style.left = ringX + 'px';
+        ringRef.current.style.top = ringY + 'px';
       }
 
       requestAnimationFrame(animate);
     };
 
-    window.addEventListener("mousemove", move);
-
+    window.addEventListener("mousemove", move, { passive: true });
     animate();
 
     const hoverElements = document.querySelectorAll(

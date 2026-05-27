@@ -1,2 +1,51 @@
 @import "tailwindcss";
 
+/* Performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize animations for mobile */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Cursor improvements */
+.cursor-ring {
+  will-change: transform;
+  transition: width 0.2s, height 0.2s, border-radius 0.2s;
+}
+
+.cursor-ring.expand {
+  width: 80px;
+  height: 80px;
+  border-width: 2px;
+}
+
+/* Canvas optimization */
+canvas {
+  will-change: contents;
+}
+
+/* Button performance */
+button {
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+

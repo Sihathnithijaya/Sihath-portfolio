@@ -108,10 +108,10 @@ export default function Projects() {
       ref={ref}
       className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* BACKGROUND GLOW */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/20 blur-[140px]" />
+      {/* BACKGROUND GLOW - Optimized */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-violet-600/15 blur-[100px] will-change-transform" />
 
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/20 blur-[140px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/15 blur-[100px] will-change-transform" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* SECTION HEADER */}

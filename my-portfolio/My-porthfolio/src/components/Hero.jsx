@@ -61,14 +61,18 @@ export default function Hero() {
 
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: false });
 
     let animationFrame;
 
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const particles = Array.from({ length: 80 }, () => ({
+    // Reduce particles on mobile for better performance
+    const isMobile = width < 768;
+    const particleCount = isMobile ? 30 : 60;
+
+    const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       r: Math.random() * 2 + 0.5,
@@ -97,28 +101,26 @@ export default function Hero() {
         if (p.y < 0 || p.y > height) p.dy *= -1;
       });
 
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
+      // Only draw connections on larger screens for performance
+      if (!isMobile) {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distSq = dx * dx + dy * dy;
+            const maxDistSq = 130 * 130;
 
-          const dy = particles[i].y - particles[j].y;
-
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 130) {
-            ctx.beginPath();
-
-            ctx.moveTo(particles[i].x, particles[i].y);
-
-            ctx.lineTo(particles[j].x, particles[j].y);
-
-            ctx.strokeStyle = `rgba(139,92,246,${
-              0.08 * (1 - distance / 130)
-            })`;
-
-            ctx.lineWidth = 0.6;
-
-            ctx.stroke();
+            if (distSq < maxDistSq) {
+              const distance = Math.sqrt(distSq);
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(139,92,246,${
+                0.08 * (1 - distance / 130)
+              })`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
           }
         }
       }
@@ -146,18 +148,18 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8"
+      className="relative min-h-screen overflow-hidden flex items-center justify-center py-16 sm:py-20 px-4 sm:px-6 lg:px-8"
     >
       {/* PARTICLE CANVAS */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-70"
+        className="absolute inset-0 w-full h-full opacity-50 md:opacity-70"
       />
 
-      {/* BACKGROUND GLOW */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-600/20 blur-[140px]" />
+      {/* BACKGROUND GLOW - Optimized */}
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-violet-600/15 blur-[100px] will-change-transform" />
 
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 blur-[140px]" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/15 blur-[100px] will-change-transform" />
 
       {/* MAIN CONTENT */}
       <div className="relative z-10 max-w-7xl w-full">

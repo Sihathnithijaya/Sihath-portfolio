@@ -142,44 +142,40 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ${
+        className={`lg:hidden overflow-hidden transition-all duration-500 border-t border-white/5 ${
           menuOpen
-            ? "max-h-[500px] opacity-100"
+            ? "max-h-[600px] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
-        <div className="mx-6 mb-6 rounded-3xl border border-white/10 bg-[#0b1120]/90 backdrop-blur-2xl p-5 shadow-2xl shadow-black/20">
-          <div className="flex flex-col gap-2">
-            {links.map((link) => (
-              <button
-                key={link}
-                onClick={() => scrollTo(link)}
-                className={`flex items-center justify-between rounded-2xl px-5 py-4 transition duration-300 ${
-                  active === link
-                    ? "bg-gradient-to-r from-violet-600/20 to-blue-500/20 border border-violet-400/20 text-white"
-                    : "text-slate-400 hover:bg-white/5 hover:text-white"
-                }`}
-              >
-                <span className="font-medium">
-                  {link}
-                </span>
+        <div className="bg-[#050816]/95 backdrop-blur-2xl px-4 py-6 space-y-2">
+          {links.map((link) => (
+            <button
+              key={link}
+              onClick={() => scrollTo(link)}
+              className={`w-full flex items-center justify-between rounded-xl px-5 py-3 text-base font-medium transition duration-300 ${
+                active === link
+                  ? "bg-gradient-to-r from-violet-600/30 to-blue-500/30 border border-violet-400/30 text-white"
+                  : "text-slate-400 hover:bg-white/5 hover:text-white"
+              }`}
+            >
+              <span>{link}</span>
 
                 {active === link && (
-                  <div className="w-2 h-2 rounded-full bg-violet-400" />
-                )}
-              </button>
-            ))}
-
-            {/* MOBILE CTA */}
-            <button
-              onClick={() => scrollTo("Contact")}
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-blue-500 px-6 py-4 text-white font-semibold shadow-xl shadow-violet-500/20"
-            >
-              Let’s Connect
-
-              <ArrowUpRight size={18} />
+                <div className="w-2 h-2 rounded-full bg-violet-400" />
+              )}
             </button>
-          </div>
+          ))}
+
+          {/* MOBILE CTA */}
+          <button
+            onClick={() => scrollTo("Contact")}
+            className="w-full mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 px-6 py-3 text-white font-semibold shadow-lg shadow-violet-500/20 transition hover:scale-[1.02]"
+          >
+            Let's Connect
+
+            <ArrowUpRight size={18} />
+          </button>
         </div>
       </div>
     </header>

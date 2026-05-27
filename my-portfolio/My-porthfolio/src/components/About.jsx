@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Code2, Sparkles, Rocket, Brain } from "lucide-react";
+import me from "../assets/me.jpg";
 
 const stats = [
   { value: "2+", label: "Years Learning & Building" },
@@ -31,11 +32,11 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-28 px-6 overflow-hidden"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 overflow-hidden"
     >
       {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-600/20 blur-[140px]" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 blur-[140px]" />
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-violet-600/15 blur-[100px]" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/15 blur-[100px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* SECTION LABEL */}
@@ -45,7 +46,7 @@ export default function About() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* IMAGE / PROFILE CARD */}
+          {/* LEFT SIDE */}
           <div className="reveal relative group">
             <div className="absolute -inset-1 rounded-[32px] bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 opacity-30 blur-2xl group-hover:opacity-50 transition duration-700" />
 
@@ -53,18 +54,24 @@ export default function About() {
               <div className="absolute top-0 right-0 w-40 h-40 bg-violet-500/20 blur-3xl" />
 
               <div className="flex flex-col items-center text-center">
-                <div className="w-36 h-36 rounded-full bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center text-5xl font-bold text-white shadow-2xl shadow-violet-500/30">
-                  SN
+                {/* IMAGE */}
+                <div className="relative group">
+                  <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 opacity-30 blur-2xl group-hover:opacity-50 transition duration-700" />
+
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl shadow-violet-500/20">
+                    <img
+                      src={me}
+                      alt="Sihath Rathnayake"
+                      className="w-full h-full rounded-full object-cover object-top scale-105 group-hover:scale-110 transition duration-700"
+                    />
+                  </div>
                 </div>
 
-                <h3 className="mt-6 text-3xl font-bold text-white">
-                  Sihath Nithijaya
-                </h3>
-
-                <p className="mt-2 text-violet-300 font-medium">
+                <p className="mt-6 text-violet-300 font-medium">
                   Full Stack Developer • Software Engineering Student
                 </p>
 
+                {/* TECH STACK */}
                 <div className="flex flex-wrap justify-center gap-3 mt-6">
                   <span className="px-4 py-2 rounded-full bg-violet-500/10 border border-violet-400/20 text-violet-200 text-sm">
                     React
@@ -86,7 +93,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* TEXT CONTENT */}
+          {/* RIGHT SIDE */}
           <div className="space-y-8">
             <div className="reveal">
               <h2 className="text-5xl md:text-6xl font-black leading-tight text-white">
@@ -99,16 +106,12 @@ export default function About() {
 
             <p className="reveal text-slate-300 text-lg leading-relaxed">
               I’m a passionate software engineering student focused on building
-              modern, scalable, and user-centric digital solutions. I enjoy
-              transforming complex ideas into intuitive applications with clean
-              architecture, polished interfaces, and real-world functionality.
+              modern, scalable, and user-centric digital solutions.
             </p>
 
             <p className="reveal text-slate-400 text-lg leading-relaxed">
               My experience spans across full stack development, API
-              engineering, UI/UX design, and modern web technologies. I enjoy
-              creating impactful systems that combine performance, accessibility,
-              and elegant user experiences.
+              engineering, UI/UX design, and modern web technologies.
             </p>
 
             {/* FEATURE CARDS */}
@@ -123,8 +126,7 @@ export default function About() {
                 </h4>
 
                 <p className="text-slate-400 mt-2 text-sm leading-relaxed">
-                  Developing responsive and scalable web applications using
-                  modern frontend and backend technologies.
+                  Developing responsive and scalable web applications.
                 </p>
               </div>
 
@@ -138,8 +140,7 @@ export default function About() {
                 </h4>
 
                 <p className="text-slate-400 mt-2 text-sm leading-relaxed">
-                  Building innovative systems with performance, scalability, and
-                  seamless user experiences in mind.
+                  Building innovative systems with performance and scalability.
                 </p>
               </div>
 
@@ -153,8 +154,7 @@ export default function About() {
                 </h4>
 
                 <p className="text-slate-400 mt-2 text-sm leading-relaxed">
-                  Constantly exploring emerging technologies, frameworks, and
-                  development practices.
+                  Exploring emerging technologies and frameworks.
                 </p>
               </div>
 
@@ -168,8 +168,7 @@ export default function About() {
                 </h4>
 
                 <p className="text-slate-400 mt-2 text-sm leading-relaxed">
-                  Designing visually engaging and intuitive interfaces with
-                  attention to detail and usability.
+                  Designing visually engaging and intuitive interfaces.
                 </p>
               </div>
             </div>
